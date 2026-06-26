@@ -3,371 +3,679 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Asyn Brasil · Brief Motion Graphics</title>
+<title>Asyn Brasil · Motion Graphics Brief</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0a1520;--surface:#0f1e2d;--surface2:#162336;--border:#1e3347;--accent:#2DCA65;--accent2:#2DCA65;--accent3:#2DCA65;--accent4:#5aeba0;--red:#ef4444;--yellow:#eab308;--text:#e6edf3;--muted:#7d8a96;--card-radius:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.5;color:var(--text)}
+:root{
+  --bg:#F8FAFC;--surface:#FFFFFF;--surface2:#F1F5F9;--border:#E2E8F0;
+  --accent:#2DCA65;--accent-dark:#1ea84f;--navy:#152535;
+  --red:#DC2626;--yellow:#D97706;--text:#0F172A;--muted:#64748B;
+  --card-radius:12px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:14px;line-height:1.5;color:var(--text)
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);padding:24px 20px}
 .page{max-width:1200px;margin:0 auto}
 
-.header{background:linear-gradient(135deg,#0a1520 0%,#152535 100%);border:1px solid var(--border);border-radius:var(--card-radius);padding:24px 28px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.header-left{display:flex;align-items:center;gap:16px}
-.logo{width:52px;height:52px;background:linear-gradient(135deg,#152535,#1e3a52);border:2px solid #2DCA65;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#2DCA65}
-.header-title{font-size:20px;font-weight:800;color:var(--text)}
-.header-subtitle{font-size:12px;color:var(--muted);margin-top:3px}
-.header-badge{background:rgba(45,202,101,0.12);border:1px solid rgba(45,202,101,0.35);color:#5aeba0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600}
+/* Header */
+.header{background:var(--navy);border-radius:var(--card-radius);padding:20px 28px;margin-bottom:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo-wrap{width:48px;height:48px;background:#1e3347;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.header-title{font-size:18px;font-weight:800;color:#fff}
+.header-subtitle{font-size:11px;color:#7d9ab0;margin-top:2px}
+.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.header-badge{background:rgba(45,202,101,.15);border:1px solid rgba(45,202,101,.3);
+  color:#2DCA65;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600}
+.lang-toggle{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;
+  padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;
+  transition:.15s;letter-spacing:.5px}
+.lang-toggle:hover{background:rgba(255,255,255,.1)}
 
-.alert-banner{background:rgba(45,202,101,0.1);border:1px solid rgba(45,202,101,0.3);border-radius:var(--card-radius);padding:12px 18px;margin-bottom:24px;display:flex;align-items:center;gap:12px;color:#5aeba0;font-size:13px}
+/* Alert */
+.alert-banner{background:rgba(45,202,101,.08);border:1px solid rgba(45,202,101,.25);
+  border-radius:var(--card-radius);padding:12px 18px;margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;color:var(--accent-dark);font-size:13px}
 
-.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:24px;gap:4px}
-.tab{padding:10px 20px;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.15s;border-radius:6px 6px 0 0}
-.tab:hover{color:var(--text);background:var(--surface)}
-.tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--surface)}
+/* Tabs */
+.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:24px;gap:2px}
+.tab{padding:10px 20px;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer;
+  border-bottom:3px solid transparent;margin-bottom:-2px;transition:.15s;border-radius:6px 6px 0 0}
+.tab:hover{color:var(--text);background:var(--surface2)}
+.tab.active{color:var(--navy);border-bottom-color:var(--accent);background:var(--surface)}
 .tab-content{display:none}
 .tab-content.active{display:block}
 
-.section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:16px}
+/* Section title */
+.section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 
+/* Grids */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
-.grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px}
-
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .card-title{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)}
 
 /* Performance table */
 .perf-table{width:100%;border-collapse:collapse;font-size:13px}
 .perf-table thead tr{background:var(--surface2)}
-.perf-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);border-bottom:1px solid var(--border)}
+.perf-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.8px;color:var(--muted);border-bottom:1px solid var(--border)}
 .perf-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
 .perf-table tr:last-child td{border-bottom:none}
-.perf-table tr:hover td{background:rgba(255,255,255,.02)}
+.perf-table tr:hover td{background:var(--surface2)}
 .badge-pill{padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600}
-.pill-green{background:rgba(45,202,101,.15);color:#5aeba0}
-.pill-blue{background:rgba(45,202,101,.15);color:#5aeba0}
-.pill-yellow{background:rgba(234,179,8,.15);color:#fde68a}
-.pill-red{background:rgba(239,68,68,.15);color:#fca5a5}
-.pill-muted{background:rgba(125,133,144,.15);color:var(--muted)}
+.pill-green{background:rgba(45,202,101,.12);color:#1a8a45}
+.pill-blue{background:rgba(45,202,101,.1);color:#1a8a45}
+.pill-yellow{background:rgba(217,119,6,.12);color:#92400e}
+.pill-red{background:rgba(220,38,38,.1);color:#991b1b}
+.pill-muted{background:var(--surface2);color:var(--muted)}
 .num-right{text-align:right;font-variant-numeric:tabular-nums}
-.up{color:#86efac;font-weight:700}
-.dn{color:#fca5a5;font-weight:700}
+.up{color:#15803d;font-weight:700}
+.dn{color:#DC2626;font-weight:700}
 
 /* Concept cards */
-.concept-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:24px;position:relative;overflow:hidden}
+.concept-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);
+  padding:24px;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .concept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.concept-card.blue::before{background:linear-gradient(90deg,#152535,#2DCA65)}
-.concept-card.orange::before{background:linear-gradient(90deg,#D97706,#f97316)}
+.concept-card.green::before{background:linear-gradient(90deg,#152535,#2DCA65)}
+.concept-card.navy::before{background:linear-gradient(90deg,#2DCA65,#152535)}
 .concept-rank{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px}
-.concept-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:6px}
-.concept-quote{font-size:15px;font-style:italic;color:#5aeba0;margin-bottom:14px;padding-left:12px;border-left:3px solid #2DCA65}
+.concept-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.concept-quote{font-size:14px;font-style:italic;color:var(--accent-dark);margin-bottom:14px;
+  padding-left:12px;border-left:3px solid var(--accent)}
 .concept-why{font-size:12px;color:var(--muted);line-height:1.6}
-.concept-stat{display:inline-flex;align-items:center;gap:6px;background:rgba(45,202,101,.1);border:1px solid rgba(45,202,101,.2);border-radius:8px;padding:4px 10px;font-size:12px;color:#5aeba0;font-weight:600;margin-top:12px}
+.concept-stat{display:inline-flex;align-items:center;gap:6px;background:rgba(45,202,101,.1);
+  border:1px solid rgba(45,202,101,.25);border-radius:8px;padding:4px 10px;
+  font-size:12px;color:#1a8a45;font-weight:600;margin-top:12px}
 
 /* Steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;margin-bottom:24px;position:relative}
-.step{background:var(--surface);border:1px solid var(--border);border-radius:0;padding:24px 20px;position:relative;text-align:center;border-right:none}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0;margin-bottom:24px}
+.step{background:var(--surface);border:1px solid var(--border);padding:24px 18px;
+  position:relative;text-align:center;border-right:none}
 .step:first-child{border-radius:var(--card-radius) 0 0 var(--card-radius)}
 .step:last-child{border-radius:0 var(--card-radius) var(--card-radius) 0;border-right:1px solid var(--border)}
-.step:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--muted);z-index:2;background:var(--bg);padding:4px}
-.step-num{width:36px;height:36px;background:linear-gradient(135deg,#152535,#2DCA65);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;margin:0 auto 12px}
-.step-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px}
+.step:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);
+  font-size:18px;color:var(--muted);z-index:2;background:var(--bg);padding:4px}
+.step-num{width:36px;height:36px;background:linear-gradient(135deg,var(--navy),#2a4a65);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+  color:var(--accent);margin:0 auto 12px;border:2px solid var(--accent)}
+.step-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
 .step-desc{font-size:11px;color:var(--muted);line-height:1.5}
-.step-visual{font-size:11px;color:#5aeba0;margin-top:8px;font-style:italic}
+.step-visual{font-size:11px;color:var(--accent-dark);margin-top:8px;font-style:italic}
 
 /* Benefits */
-.benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:24px}
-.benefit-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:13px}
-.benefit-item.priority{border-color:rgba(45,202,101,.4);background:rgba(45,202,101,.05)}
-.benefit-item.priority2{border-color:rgba(45,202,101,.25);background:rgba(45,202,101,.03)}
-.benefit-check{font-size:16px;flex-shrink:0}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px;margin-bottom:24px}
+.benefit-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:11px 15px;display:flex;align-items:center;gap:11px;font-size:13px;
+  box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.benefit-item.priority{border-color:rgba(45,202,101,.4);background:rgba(45,202,101,.04)}
+.benefit-item.priority2{border-color:rgba(45,202,101,.25);background:rgba(45,202,101,.02)}
 .benefit-text{color:var(--text)}
-.benefit-badge{margin-left:auto;flex-shrink:0}
+.benefit-badge{margin-left:auto;flex-shrink:0;padding:2px 7px;border-radius:10px;
+  font-size:10px;font-weight:600;background:rgba(45,202,101,.12);color:#1a8a45;white-space:nowrap}
 
-/* Specs */
+/* Priority cards */
+.priority-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:24px}
+.priority-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);
+  padding:18px;border-left:4px solid;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.priority-card.p1{border-left-color:#2DCA65}
+.priority-card.p2{border-left-color:#1ea84f}
+.priority-card.p3{border-left-color:#a3e8c0}
+.priority-rank{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
+.priority-name{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.priority-angle{font-size:12px;color:var(--muted);margin-bottom:6px}
+.priority-formats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.format-tag{padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;
+  background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+
+/* Dos/Donts */
+.dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.dos,.donts{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:18px}
+.dos{border-top:3px solid #2DCA65}
+.donts{border-top:3px solid #DC2626}
+.dos-title{font-size:12px;font-weight:700;margin-bottom:12px;color:#15803d}
+.donts-title{font-size:12px;font-weight:700;margin-bottom:12px;color:#DC2626}
+.dos-item,.dont-item{font-size:12px;padding:6px 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;color:var(--muted)}
+.dos-item:last-child,.dont-item:last-child{border-bottom:none}
+
+/* Charts */
+.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);
+  padding:20px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.chart-title{font-size:13px;font-weight:700;margin-bottom:16px;color:var(--navy)}
+
+/* Palette */
+.palette-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.palette-swatch{border-radius:8px;overflow:hidden;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.swatch-color{height:52px;width:120px}
+.swatch-info{padding:6px 10px;background:var(--surface)}
+.swatch-hex{font-size:11px;font-weight:700;font-family:monospace;color:var(--text)}
+.swatch-label{font-size:10px;color:var(--muted)}
+
+/* Spec table */
 .spec-table{width:100%;border-collapse:collapse;font-size:13px}
 .spec-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
 .spec-table td:first-child{color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;width:160px}
 .spec-table tr:last-child td{border-bottom:none}
 
-.palette-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.palette-swatch{border-radius:8px;overflow:hidden;border:1px solid var(--border)}
-.swatch-color{height:52px;width:120px}
-.swatch-info{padding:6px 10px;background:var(--surface2)}
-.swatch-hex{font-size:11px;font-weight:700;font-family:monospace;color:var(--text)}
-.swatch-label{font-size:10px;color:var(--muted)}
+/* Tagline CTA */
+.cta-box{text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.cta-headline{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.cta-sub{font-size:16px;color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);
+  padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;color:#fff;
+  text-decoration:none;letter-spacing:-.2px}
 
-.entregaveis{background:var(--surface2);border:1px solid var(--border);border-radius:var(--card-radius);padding:20px;font-family:monospace;font-size:12px;color:#93c5fd;line-height:2;margin-bottom:24px}
-.entregaveis .dir{color:var(--muted)}
-.entregaveis .file{color:#86efac}
+/* Script card */
+.script-card{font-size:12px;color:var(--muted);line-height:2.2}
+.script-ts{font-weight:700;color:var(--navy)}
 
-.priority-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:24px}
-.priority-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:18px;border-left:4px solid}
-.priority-card.p1{border-left-color:#2DCA65}
-.priority-card.p2{border-left-color:#1e6b45}
-.priority-card.p3{border-left-color:#a855f7}
-.priority-rank{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
-.priority-name{font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px}
-.priority-angle{font-size:12px;color:var(--muted);margin-bottom:10px}
-.priority-formats{display:flex;flex-wrap:wrap;gap:6px}
-.format-tag{padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;background:var(--surface2);color:var(--muted)}
-
-.dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-.dos,.donts{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:18px}
-.dos{border-top:3px solid #2DCA65}
-.donts{border-top:3px solid #ef4444}
-.dos-title,.donts-title{font-size:12px;font-weight:700;margin-bottom:12px}
-.dos-title{color:#5aeba0}
-.donts-title{color:#fca5a5}
-.dos-item,.dont-item{font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;color:var(--muted)}
-.dos-item:last-child,.dont-item:last-child{border-bottom:none}
-
-.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:20px;margin-bottom:24px}
-.chart-title{font-size:13px;font-weight:700;margin-bottom:16px;color:var(--text)}
-
-.footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:11px}
+.footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--border);
+  text-align:center;color:var(--muted);font-size:11px;line-height:1.8}
 </style>
 </head>
 <body>
 <div class="page">
 
+<!-- HEADER -->
 <div class="header">
   <div class="header-left">
-    <div class="logo">A</div>
+    <div class="logo-wrap"><svg width="38" height="38" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 46 L22 16 Q22 8 30 8 L56 8 Q75 8 75 28 Q75 48 56 48 L22 48" stroke="#2DCA65" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M68 44 L68 74 Q68 82 60 82 L34 82 Q15 82 15 62 Q15 42 34 42 L68 42" stroke="#2DCA65" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
     <div>
-      <div class="header-title">Asyn Brasil · Brief de Motion Graphics</div>
+      <div class="header-title">Asyn Brasil · Motion Graphics Brief</div>
       <div class="header-subtitle">Campanha Jun 2026 · Ampler Marketing · nei@ampler.me</div>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-    <div class="header-badge">🏆 A6 +329% esta semana</div>
-    <div class="header-badge" style="background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);color:#86efac">🎬 Motion · 3 peças prioritárias</div>
+  <div class="header-right">
+    <div class="header-badge" id="badge-hero"></div>
+    <div class="header-badge" id="badge-motion"></div>
+    <button class="lang-toggle" id="lang-btn" onclick="toggleLang()">EN</button>
   </div>
 </div>
 
+<!-- ALERT -->
 <div class="alert-banner">
-  <span style="font-size:18px">📊</span>
-  <span><strong>Baseado em dados reais:</strong> A6 (Demo) dominou a semana com +329% de impressões e 195 LPVs. A2 (Sem OCR) cresce +218%. Motion deve amplificar esses ângulos — não reinventar.</span>
+  <span style="font-size:18px;flex-shrink:0">📊</span>
+  <span id="alert-text"></span>
 </div>
 
+<!-- TABS -->
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('conceito',this)">📊 Performance & Conceito</div>
-  <div class="tab" onclick="switchTab('processo',this)">🎬 Passo a Passo</div>
-  <div class="tab" onclick="switchTab('beneficios',this)">✅ Benefícios</div>
-  <div class="tab" onclick="switchTab('producao',this)">⚙️ Produção</div>
+  <div class="tab active" id="tab-btn-0" onclick="switchTab('conceito',0)"></div>
+  <div class="tab" id="tab-btn-1" onclick="switchTab('processo',1)"></div>
+  <div class="tab" id="tab-btn-2" onclick="switchTab('beneficios',2)"></div>
+  <div class="tab" id="tab-btn-3" onclick="switchTab('producao',3)"></div>
 </div>
 
-<!-- TAB 1: CONCEITO -->
+<!-- TAB 1: PERFORMANCE & CONCEITO -->
 <div id="tab-conceito" class="tab-content active">
-
-  <div class="section-title">Performance da semana — o que está funcionando</div>
-  <div style="overflow-x:auto;margin-bottom:24px">
+  <div class="section-title" id="sec_perf"></div>
+  <div style="overflow-x:auto;margin-bottom:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);box-shadow:0 1px 3px rgba(0,0,0,.04)">
     <table class="perf-table">
       <thead><tr>
-        <th>Criativo</th><th>Impressões</th><th>LPV</th><th>Variação</th><th>CPC</th><th>Sinal</th>
+        <th id="th_creative"></th><th id="th_impr"></th><th id="th_lpv"></th>
+        <th id="th_var"></th><th id="th_cpc"></th><th id="th_signal"></th>
       </tr></thead>
       <tbody>
-        <tr><td><strong>A6 · Demonstração "20 min"</strong></td><td class="num-right">19.078</td><td class="num-right">195</td><td class="num-right up">↑ +329%</td><td class="num-right">R$0,49</td><td><span class="badge-pill pill-green">🏆 Escalar</span></td></tr>
-        <tr><td><strong>A2 · Sem OCR</strong></td><td class="num-right">5.599</td><td class="num-right">52</td><td class="num-right up">↑ +218%</td><td class="num-right">R$0,52</td><td><span class="badge-pill pill-blue">🥈 Crescendo</span></td></tr>
-        <tr><td>ADJ · Depoimento Johannes</td><td class="num-right">3.298</td><td class="num-right">30</td><td class="num-right up">↑ +9%</td><td class="num-right">R$0,45</td><td><span class="badge-pill pill-muted">Estável</span></td></tr>
-        <tr><td>A1 · Dor Operacional</td><td class="num-right">1.374</td><td class="num-right">14</td><td class="num-right dn">↓ −83%</td><td class="num-right">R$0,60</td><td><span class="badge-pill pill-yellow">⚠️ Fadiga</span></td></tr>
-        <tr><td>A3 · QR→SEFAZ→ERP</td><td class="num-right">538</td><td class="num-right">3</td><td class="num-right dn">↓ −50%</td><td class="num-right">R$0,80</td><td><span class="badge-pill pill-red">❌ Pausar</span></td></tr>
-        <tr><td>A4 · Compliance</td><td class="num-right">34</td><td class="num-right">0</td><td class="num-right dn">↓ −97%</td><td class="num-right">—</td><td><span class="badge-pill pill-red">❌ Pausar</span></td></tr>
+        <tr><td><strong>A6 · Demo "20 min"</strong></td><td class="num-right">19.078</td><td class="num-right">195</td><td class="num-right up">↑ +329%</td><td class="num-right">R$0,49</td><td><span class="badge-pill pill-green signal-scale"></span></td></tr>
+        <tr><td><strong>A2 · Sem OCR</strong></td><td class="num-right">5.599</td><td class="num-right">52</td><td class="num-right up">↑ +218%</td><td class="num-right">R$0,52</td><td><span class="badge-pill pill-blue signal-growing"></span></td></tr>
+        <tr><td>ADJ · Depoimento Johannes</td><td class="num-right">3.298</td><td class="num-right">30</td><td class="num-right up">↑ +9%</td><td class="num-right">R$0,45</td><td><span class="badge-pill pill-muted signal-stable"></span></td></tr>
+        <tr><td>A1 · Dor Operacional</td><td class="num-right">1.374</td><td class="num-right">14</td><td class="num-right dn">↓ −83%</td><td class="num-right">R$0,60</td><td><span class="badge-pill pill-yellow signal-fatigue"></span></td></tr>
+        <tr><td>A3 · QR→SEFAZ→ERP</td><td class="num-right">538</td><td class="num-right">3</td><td class="num-right dn">↓ −50%</td><td class="num-right">R$0,80</td><td><span class="badge-pill pill-red signal-pause"></span></td></tr>
+        <tr><td>A4 · Compliance</td><td class="num-right">34</td><td class="num-right">0</td><td class="num-right dn">↓ −97%</td><td class="num-right">—</td><td><span class="badge-pill pill-red signal-pause"></span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="grid-2">
-    <div class="chart-wrap"><div class="chart-title">LPVs por criativo · semana atual</div><canvas id="perfChart" height="200"></canvas></div>
-    <div class="chart-wrap"><div class="chart-title">Variação % vs semana anterior</div><canvas id="deltaChart" height="200"></canvas></div>
+    <div class="chart-wrap"><div class="chart-title" id="chart-title-1"></div><canvas id="perfChart" height="200"></canvas></div>
+    <div class="chart-wrap"><div class="chart-title" id="chart-title-2"></div><canvas id="deltaChart" height="200"></canvas></div>
   </div>
 
-  <div class="section-title">Conceitos vencedores para motion</div>
+  <div class="section-title" id="sec_concepts"></div>
   <div class="grid-2">
-    <div class="concept-card blue">
-      <div class="concept-rank">🏆 Prioridade 1 · A6</div>
+    <div class="concept-card green">
+      <div class="concept-rank">🏆 A6</div>
       <div class="concept-title">ROI Concreto</div>
-      <div class="concept-quote">"20 minutos que valem R$100k/ano"</div>
-      <div class="concept-why">O mercado responde a ROI tangível. A6 é o criativo mais eficiente da campanha — 195 LPVs com CPC de R$0,49. Motion deve preservar a promessa direta: tempo de demo vs. retorno financeiro.</div>
-      <div><span class="concept-stat">↑ +329% impressões · 195 LPVs</span></div>
+      <div class="concept-quote" id="q-a6">"20 minutos que valem R$100k/ano"</div>
+      <div class="concept-why">O mercado responde a ROI tangível. A6 é o criativo mais eficiente — 195 LPVs com CPC de R$0,49. Motion deve preservar a promessa direta.</div>
+      <span class="concept-stat">↑ +329% impressões · 195 LPVs</span>
     </div>
-    <div class="concept-card orange">
-      <div class="concept-rank">🥈 Prioridade 2 · A2</div>
+    <div class="concept-card navy">
+      <div class="concept-rank">🥈 A2</div>
       <div class="concept-title">Processo Sem Fricção</div>
-      <div class="concept-quote">"Do QR Code ao ERP em 3 segundos. Sem digitação. Sem erro."</div>
-      <div class="concept-why">A2 está em aceleração forte. O público financeiro entende a dor do OCR e da digitação manual. Motion mostra o antes/depois do processo — câmera, erro, retrabalho vs. QR instantâneo.</div>
-      <div><span class="concept-stat" style="background:rgba(45,202,101,.1);border-color:rgba(45,202,101,.2);color:#5aeba0">↑ +218% impressões · 52 LPVs</span></div>
+      <div class="concept-quote" id="q-a2">"Do QR Code ao ERP em 3 segundos. Sem digitação. Sem erro."</div>
+      <div class="concept-why">A2 está em aceleração forte. O público entende a dor do OCR e da digitação manual. Motion mostra o antes/depois do processo.</div>
+      <span class="concept-stat" style="background:rgba(21,37,53,.08);border-color:rgba(21,37,53,.2);color:var(--navy)">↑ +218% impressões · 52 LPVs</span>
     </div>
   </div>
 
-  <div class="section-title">Prioridade de produção</div>
-  <div class="priority-grid"><div class="priority-card p1"><div class="priority-rank">Prioridade 1</div><div class="priority-name">A6 · Demo ROI</div><div class="priority-angle" style="font-style:italic;color:#93c5fd">"20 min que valem R$100k/ano"</div><div class="priority-angle">+329% · 195 LPV · Campeão absoluto</div><div class="priority-formats"><span class='format-tag'>Stories 9:16</span><span class='format-tag'>Feed 1:1</span></div></div><div class="priority-card p2"><div class="priority-rank">Prioridade 2</div><div class="priority-name">A2 · Passo a Passo</div><div class="priority-angle" style="font-style:italic;color:#93c5fd">"QR → SEFAZ → ERP · 3 segundos"</div><div class="priority-angle">+218% · 52 LPV · Crescendo</div><div class="priority-formats"><span class='format-tag'>Stories 9:16</span><span class='format-tag'>Feed 1:1</span></div></div><div class="priority-card p3"><div class="priority-rank">Prioridade 3</div><div class="priority-name">A1 · Renovação</div><div class="priority-angle" style="font-style:italic;color:#93c5fd">Nova abordagem anti-fadiga</div><div class="priority-angle">−83% · Criativo atual saturado</div><div class="priority-formats"><span class='format-tag'>Stories 9:16</span></div></div></div>
-
+  <div class="section-title" id="sec_priority"></div>
+  <div class="priority-grid">
+    <div class="priority-card p1">
+      <div class="priority-rank" id="prio-rank-0"></div>
+      <div class="priority-name">A6 · Demo ROI</div>
+      <div class="priority-angle" style="font-style:italic;color:var(--accent-dark)">"20 min que valem R$100k/ano"</div>
+      <div class="priority-angle" id="prio-why-0"></div>
+      <div class="priority-formats"><span class="format-tag">Stories 9:16</span><span class="format-tag">Feed 1:1</span></div>
+    </div>
+    <div class="priority-card p2">
+      <div class="priority-rank" id="prio-rank-1"></div>
+      <div class="priority-name">A2 · Passo a Passo</div>
+      <div class="priority-angle" style="font-style:italic;color:var(--accent-dark)">"QR → SEFAZ → ERP · 3 segundos"</div>
+      <div class="priority-angle" id="prio-why-1"></div>
+      <div class="priority-formats"><span class="format-tag">Stories 9:16</span><span class="format-tag">Feed 1:1</span></div>
+    </div>
+    <div class="priority-card p3">
+      <div class="priority-rank" id="prio-rank-2"></div>
+      <div class="priority-name">A1 · Renovação</div>
+      <div class="priority-angle" style="font-style:italic;color:var(--muted)">Nova abordagem anti-fadiga</div>
+      <div class="priority-angle" id="prio-why-2"></div>
+      <div class="priority-formats"><span class="format-tag">Stories 9:16</span></div>
+    </div>
+  </div>
 </div>
 
-<!-- TAB 2: PROCESSO -->
+<!-- TAB 2: PASSO A PASSO -->
 <div id="tab-processo" class="tab-content">
-
-  <div class="section-title">O passo a passo — base para animação</div>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px">Cada passo vira uma tela animada. Transição fluida entre elas, texto legível em menos de 3 segundos por tela.</p>
-  <div class="steps" style="margin-bottom:32px"><div class="step"><div class="step-num">1</div><div class="step-title">PJ entrega a nota</div><div class="step-desc">Nota fiscal NFC-e com QR Code visível</div><div class="step-visual">Mão com nota em destaque</div></div><div class="step"><div class="step-num">2</div><div class="step-title">Financeiro escaneia</div><div class="step-desc">App Asyn abre câmera · foca o QR Code</div><div class="step-visual">Celular → câmera → QR</div></div><div class="step"><div class="step-num">3</div><div class="step-title">SEFAZ valida</div><div class="step-desc">Consulta automática · nenhum toque humano</div><div class="step-visual">'Validando...' → ✅ Aprovada</div></div><div class="step"><div class="step-num">4</div><div class="step-title">ERP recebe os dados</div><div class="step-desc">Campos preenchidos sem digitar nada</div><div class="step-visual">Formulário completando sozinho</div></div><div class="step"><div class="step-num">5</div><div class="step-title">Despesa registrada</div><div class="step-desc">Reembolso liberado imediatamente</div><div class="step-visual">Notificação: 'Reembolso enviado'</div></div></div>
-
-  <div class="section-title">Tagline de encerramento</div>
-  <div class="card" style="text-align:center;padding:32px">
-    <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px">"Do QR Code ao ERP em 3 segundos."</div>
-    <div style="font-size:18px;font-weight:600;color:var(--muted);margin-bottom:24px">"Sem erro. Sem esforço."</div>
-    <div style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#152535,#1e4a2e);border:2px solid #2DCA65;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;color:#2DCA65">
-      Agende sua demo gratuita · asynbrasil.com
-    </div>
+  <div class="section-title" id="sec_steps"></div>
+  <p id="sub_steps_sub" style="color:var(--muted);font-size:13px;margin-bottom:20px"></p>
+  <div class="steps" style="margin-bottom:32px">
+    <div class="step" id="step-0"><div class="step-num">1</div><div class="step-title"></div><div class="step-desc"></div><div class="step-visual"></div></div>
+    <div class="step" id="step-1"><div class="step-num">2</div><div class="step-title"></div><div class="step-desc"></div><div class="step-visual"></div></div>
+    <div class="step" id="step-2"><div class="step-num">3</div><div class="step-title"></div><div class="step-desc"></div><div class="step-visual"></div></div>
+    <div class="step" id="step-3"><div class="step-num">4</div><div class="step-title"></div><div class="step-desc"></div><div class="step-visual"></div></div>
+    <div class="step" id="step-4"><div class="step-num">5</div><div class="step-title"></div><div class="step-desc"></div><div class="step-visual"></div></div>
   </div>
 
-  <div class="section-title" style="margin-top:24px">Roteiros por formato</div>
+  <div class="section-title" id="sec_tagline"></div>
+  <div class="cta-box">
+    <div class="cta-headline" id="tagline-h"></div>
+    <div class="cta-sub" id="tagline-s"></div>
+    <span class="cta-btn" id="cta-btn"></span>
+  </div>
+
+  <div class="section-title" id="sec_scripts"></div>
   <div class="grid-2">
-    <div class="card">
-      <div class="card-title">📱 Stories 9:16 · 20s · A6 Demo ROI</div>
-      <div style="font-size:12px;color:var(--muted);line-height:2">
-        <div style="color:var(--text);font-weight:600">[0–3s]</div> Tela escura · "Você sabe quanto custa 1 reembolso PJ errado?"
-        <div style="color:var(--text);font-weight:600">[3–7s]</div> Número animado grande: <span style="color:#fca5a5">R$ 340 em média</span> (retrabalho + acerto + hora do financeiro)
-        <div style="color:var(--text);font-weight:600">[7–13s]</div> Interface Asyn · QR escaneado · tela de aprovação
-        <div style="color:var(--text);font-weight:600">[13–18s]</div> "20 minutos de demo. O retorno é imediato."
-        <div style="color:var(--text);font-weight:600">[18–20s]</div> CTA + Logo + URL
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">📱 Stories 9:16 · 20s · A2 Processo</div>
-      <div style="font-size:12px;color:var(--muted);line-height:2">
-        <div style="color:var(--text);font-weight:600">[0–4s]</div> Split: ANTES · pessoa fotografando nota torta + OCR com erro
-        <div style="color:var(--text);font-weight:600">[4–8s]</div> COM ASYN · QR Code escaneado em 1 segundo
-        <div style="color:var(--text);font-weight:600">[8–14s]</div> Fluxo animado: QR → ✅ SEFAZ → ERP preenchido
-        <div style="color:var(--text);font-weight:600">[14–18s]</div> "3 segundos. Sem digitação. Sem erro."
-        <div style="color:var(--text);font-weight:600">[18–20s]</div> CTA + Logo + URL
-      </div>
-    </div>
+    <div class="card"><div class="card-title" id="script1-title"></div><div class="script-card" id="script1-lines"></div></div>
+    <div class="card"><div class="card-title" id="script2-title"></div><div class="script-card" id="script2-lines"></div></div>
   </div>
-
 </div>
 
 <!-- TAB 3: BENEFÍCIOS -->
 <div id="tab-beneficios" class="tab-content">
+  <div class="section-title" id="sec_benefits"></div>
+  <p id="sub_benefits_sub" style="color:var(--muted);font-size:13px;margin-bottom:16px"></p>
+  <div class="benefits-grid" id="benefits-grid"></div>
 
-  <div class="section-title">Lista completa de benefícios</div>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:16px">
-    Os marcados em <span style="color:#93c5fd">azul</span> derivam dos criativos campeões e devem aparecer primeiro no vídeo.
-    Os marcados em <span style="color:#86efac">verde</span> reforçam o posicionamento.
-  </p>
-  <div class="benefits-grid"><div class="benefit-item priority"><span class="benefit-check">✅</span><span class="benefit-text">Do QR Code ao ERP em 3 segundos</span><span class="badge-pill pill-blue benefit-badge" style="font-size:10px">A2 +218% esta semana</span></div><div class="benefit-item priority"><span class="benefit-check">✅</span><span class="benefit-text">Zero digitação manual</span></div><div class="benefit-item priority"><span class="benefit-check">✅</span><span class="benefit-text">Sem erros de OCR</span></div><div class="benefit-item priority"><span class="benefit-check">✅</span><span class="benefit-text">Validação fiscal automática (SEFAZ)</span></div><div class="benefit-item priority"><span class="benefit-check">✅</span><span class="benefit-text">Fechamento de mês sem retrabalho</span><span class="badge-pill pill-blue benefit-badge" style="font-size:10px">A6 +329% esta semana</span></div><div class="benefit-item priority"><span class="benefit-check">✅</span><span class="benefit-text">20 minutos de demo · retorno imediato</span></div><div class="benefit-item priority2"><span class="benefit-check">✅</span><span class="benefit-text">Auditoria completa sem esforço</span></div><div class="benefit-item priority2"><span class="benefit-check">✅</span><span class="benefit-text">Conformidade tributária garantida</span></div><div class="benefit-item priority2"><span class="benefit-check">✅</span><span class="benefit-text">Controle total das despesas com PJ</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Relatórios prontos sem exportação manual</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Aprovação de reembolso mais rápida</span><span class="badge-pill pill-blue benefit-badge" style="font-size:10px">PJ mais satisfeito</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Escala sem aumentar a equipe financeira</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Visibilidade em tempo real dos gastos</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Integra com o ERP que você já usa</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Reduz horas extras no fechamento mensal</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Rastreabilidade 100% para fiscalização</span></div><div class="benefit-item "><span class="benefit-check">✅</span><span class="benefit-text">Sem risco de glosa fiscal por nota inválida</span></div></div>
-
-  <div class="section-title">Tom visual · o que fazer e o que evitar</div>
+  <div class="section-title" id="sec_visual"></div>
   <div class="dos-donts">
-    <div class="dos">
-      <div class="dos-title">✅ Fazer</div>
-      <div class="dos-item" style="color:#e6edf3">✔ Interface real do app Asyn</div>
-      <div class="dos-item" style="color:#e6edf3">✔ Números reais de performance (3s, R$340...)</div>
-      <div class="dos-item" style="color:#e6edf3">✔ Contraste antes/depois (OCR vs QR)</div>
-      <div class="dos-item" style="color:#e6edf3">✔ Texto legível em menos de 3 segundos</div>
-      <div class="dos-item" style="color:#e6edf3">✔ Fluxo rápido e limpo entre telas</div>
-      <div class="dos-item" style="color:#e6edf3">✔ Paleta fria e tech, consistente</div>
-    </div>
-    <div class="donts">
-      <div class="donts-title">❌ Evitar</div>
-      <div class="dont-item">✘ UI ilustrada ou genérica (Freepik, Canva)</div>
-      <div class="dont-item">✘ Hipérboles sem base em dado real</div>
-      <div class="dont-item">✘ Drama exagerado na cena do problema</div>
-      <div class="dont-item">✘ Animações longas e complexas</div>
-      <div class="dont-item">✘ Parágrafo de texto em vídeo</div>
-      <div class="dont-item">✘ Cores aleatórias fora da paleta</div>
-    </div>
+    <div class="dos"><div class="dos-title" id="dos-title"></div><div id="dos-items"></div></div>
+    <div class="donts"><div class="donts-title" id="dont-title"></div><div id="dont-items"></div></div>
   </div>
-
 </div>
 
 <!-- TAB 4: PRODUÇÃO -->
 <div id="tab-producao" class="tab-content">
-
-  <div class="section-title">Especificações técnicas</div>
+  <div class="section-title" id="sec_specs"></div>
   <div class="card" style="margin-bottom:24px">
-    <table class="spec-table">
-      <tr><td>Stories / Reels</td><td>9:16 · 1080×1920 px · 20–30s · Meta</td></tr>
-      <tr><td>Feed quadrado</td><td>1:1 · 1080×1080 px · 20–30s · Meta + LinkedIn</td></tr>
-      <tr><td>Feed paisagem</td><td>1.91:1 · 1200×628 px · 20–30s · LinkedIn</td></tr>
-      <tr><td>Codec</td><td>H.264 · MP4 · sem B-frames</td></tr>
-      <tr><td>FPS / Cor</td><td>30fps · sRGB · sem HDR</td></tr>
-      <tr><td>Áudio</td><td>OFF por padrão — legenda obrigatória em todas as telas</td></tr>
-      <tr><td>Safe zone</td><td>15% de margem em todos os lados</td></tr>
-      <tr><td>Tamanho máximo</td><td>250 MB (Meta) · 200 MB (LinkedIn)</td></tr>
-    </table>
+    <table class="spec-table"><tbody id="spec-tbody"></tbody></table>
   </div>
 
-  <div class="section-title">Paleta de cores</div>
-  <div class="palette-grid"><div class="palette-swatch"><div class="swatch-color" style="background:#2DCA65"></div>
-<div class="swatch-info"><div class="swatch-hex">#2DCA65</div><div class="swatch-label">Verde Asyn · CTAs, Destaques</div></div></div><div class="palette-swatch"><div class="swatch-color" style="background:#152535"></div>
-<div class="swatch-info"><div class="swatch-hex">#152535</div><div class="swatch-label">Marinho escuro · Texto, Logo</div></div></div><div class="palette-swatch"><div class="swatch-color" style="background:#FAF4EE"></div>
-<div class="swatch-info"><div class="swatch-hex" style="color:#152535">#FAF4EE</div><div class="swatch-label" style="color:#8a7a6a">Creme · Background quente (A1)</div></div></div><div class="palette-swatch"><div class="swatch-color" style="background:#E0F8EC"></div>
-<div class="swatch-info"><div class="swatch-hex" style="color:#152535">#E0F8EC</div><div class="swatch-label" style="color:#8a7a6a">Verde claro · Cards destaque</div></div></div><div class="palette-swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #30363d"></div>
-<div class="swatch-info"><div class="swatch-hex" style="color:#152535">#FFFFFF</div><div class="swatch-label" style="color:#8a7a6a">Branco · Background limpo (A6)</div></div></div><div class="palette-swatch"><div class="swatch-color" style="background:#D97706"></div>
-<div class="swatch-info"><div class="swatch-hex">#D97706</div><div class="swatch-label">Âmbar · O problema (antes/depois)</div></div></div></div>
-
-<div class="section-title">Tipografia</div>
-  <div class="card" style="margin-bottom:24px">
-    <table class="spec-table">
-      <tr><td>Família</td><td>Inter (Google Fonts · free)</td></tr>
-      <tr><td>Headline</td><td>Inter Bold / ExtraBold · corpo grande · tracking negativo</td></tr>
-      <tr><td>Body</td><td>Inter Regular · breve e escaneável</td></tr>
-      <tr><td>Números</td><td>Inter ExtraBold · escala grande · destaque visual</td></tr>
-    </table>
-  </div>
-
-  <div class="section-title">Estrutura de entregáveis</div>
-  <div class="entregaveis">
-<span class="dir">asyn-motion/</span>
-├── <span class="dir">A6-demo-roi/</span>
-│   ├── <span class="file">A6-stories-9x16-v1.mp4</span>
-│   └── <span class="file">A6-feed-1x1-v1.mp4</span>
-├── <span class="dir">A2-processo/</span>
-│   ├── <span class="file">A2-stories-9x16-v1.mp4</span>
-│   └── <span class="file">A2-feed-1x1-v1.mp4</span>
-├── <span class="dir">A1-renovacao/</span>
-│   └── <span class="file">A1-stories-9x16-v1.mp4</span>
-└── <span class="dir">bumper/</span>
-    ├── <span class="file">bumper-1x1-5s.mp4</span>
-    └── <span class="file">bumper-9x16-5s.mp4</span>
-  </div>
-
-  <div class="section-title">Referências de estilo</div>
-  <div class="grid-3">
-    <div class="card"><div class="card-title">Rippling</div><div style="font-size:12px;color:var(--muted)">Fluidez de interface B2B — transições entre telas de app, dados em movimento</div></div>
-    <div class="card"><div class="card-title">Brex</div><div style="font-size:12px;color:var(--muted)">Contraste antes/depois financeiro — dor do problema → solução direta</div></div>
-    <div class="card"><div class="card-title">Notion</div><div style="font-size:12px;color:var(--muted)">Tipografia limpa em movimento — ritmo pausado mas eficiente</div></div>
-  </div>
-
+  <div class="section-title" id="sec_palette"></div>
+  <div class="palette-grid" id="palette-grid"></div>
 </div>
 
 <div class="footer">
-  Ampler Marketing · Asyn Brasil · Campanha Jun 2026 · nei@ampler.me<br>
-  Brief baseado em dados reais: Meta Marketing API v21.0 · Semana 23–26 jun 2026
+  <span id="footer-1"></span><br>
+  <span id="footer-2"></span>
 </div>
 
 </div>
 <script>
-Chart.defaults.color='#7d8590';
-Chart.defaults.borderColor='#30363d';
+Chart.defaults.color='#64748B';
+Chart.defaults.borderColor='#E2E8F0';
 Chart.defaults.font.family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif";
 Chart.defaults.font.size=11;
 
+const T={
+  pt:{
+    tab1:'📊 Performance & Conceito',tab2:'🎬 Passo a Passo',tab3:'✅ Benefícios',tab4:'⚙️ Produção',
+    lang_btn:'EN',
+    alert:'<strong>Baseado em dados reais:</strong> A6 (Demo) dominou a semana com +329% de impressões e 195 LPVs. A2 (Sem OCR) cresce +218%. Motion deve amplificar esses ângulos — não reinventar.',
+    sec_perf:'Performance da semana — o que está funcionando',
+    sec_concepts:'Conceitos vencedores para motion',
+    sec_priority:'Prioridade de produção',
+    sec_steps:'O passo a passo — base para animação',
+    sec_steps_sub:'Cada passo vira uma tela animada. Transição fluida, texto legível em menos de 3 segundos.',
+    sec_tagline:'Tagline de encerramento',
+    sec_scripts:'Roteiros por formato',
+    sec_benefits:'Lista completa de benefícios',
+    sec_benefits_sub:'Os marcados em verde derivam dos criativos campeões e devem aparecer primeiro.',
+    sec_visual:'Tom visual',
+    sec_specs:'Especificações técnicas',
+    sec_palette:'Paleta de cores da marca Asyn',
+    th_creative:'Criativo',th_impr:'Impressões',th_lpv:'LPV',th_var:'Variação',th_cpc:'CPC',th_signal:'Sinal',
+    signal_scale:'🏆 Escalar',signal_growing:'🥈 Crescendo',signal_stable:'Estável',signal_fatigue:'⚠️ Fadiga',signal_pause:'❌ Pausar',
+    prio_label:['Prioridade 1','Prioridade 2','Prioridade 3'],
+    prio_why:['Campeão absoluto: +329% · 195 LPVs','Em aceleração forte: +218% · 52 LPVs','Em queda −83% · Criativo atual saturado'],
+    steps:[
+      ['PJ entrega a nota','Nota fiscal NFC-e com QR Code visível','Mão com nota em destaque'],
+      ['Financeiro escaneia','App Asyn abre câmera · foca o QR Code','Celular → câmera → QR'],
+      ['SEFAZ valida','Consulta automática, nenhum toque humano','"Validando..." → ✅ Aprovada'],
+      ['ERP recebe os dados','Campos preenchidos sem digitar nada','Formulário completando sozinho'],
+      ['Despesa registrada','Reembolso liberado imediatamente','Notificação: "Reembolso enviado"'],
+    ],
+    tagline_h:'"Do QR Code ao ERP em 3 segundos."',
+    tagline_s:'"Sem erro. Sem esforço."',
+    cta_btn:'Agende sua demo gratuita · asynbrasil.com',
+    script1_title:'📱 Stories 9:16 · 20s · A6 Demo ROI',
+    script2_title:'📱 Stories 9:16 · 20s · A2 Processo',
+    script1_lines:[
+      ['0–3s','Tela escura · "Você sabe quanto custa 1 reembolso PJ errado?"'],
+      ['3–7s','Número animado: R$340 em média (retrabalho + acerto + hora financeiro)'],
+      ['7–13s','Interface Asyn · QR escaneado · tela de aprovação'],
+      ['13–18s','"20 minutos de demo. O retorno é imediato."'],
+      ['18–20s','CTA + Logo + URL'],
+    ],
+    script2_lines:[
+      ['0–4s','ANTES: pessoa fotografando nota torta + OCR com erro'],
+      ['4–8s','COM ASYN: QR Code escaneado em 1 segundo'],
+      ['8–14s','Fluxo animado: QR → ✅ SEFAZ → ERP preenchido'],
+      ['14–18s','"3 segundos. Sem digitação. Sem erro."'],
+      ['18–20s','CTA + Logo + URL'],
+    ],
+    benefits:[
+      ['Do QR Code ao ERP em 3 segundos','priority','A2 +218% esta semana'],
+      ['Zero digitação manual','priority',''],
+      ['Sem erros de OCR','priority',''],
+      ['Validação fiscal automática (SEFAZ)','priority',''],
+      ['Fechamento de mês sem retrabalho','priority','A6 +329% esta semana'],
+      ['20 minutos de demo · retorno imediato','priority',''],
+      ['Auditoria completa sem esforço','priority2',''],
+      ['Conformidade tributária garantida','priority2',''],
+      ['Controle total das despesas com PJ','priority2',''],
+      ['Relatórios prontos sem exportação manual','',''],
+      ['Aprovação de reembolso mais rápida','','PJ mais satisfeito'],
+      ['Escala sem aumentar a equipe financeira','',''],
+      ['Visibilidade em tempo real dos gastos','',''],
+      ['Integra com o ERP que você já usa','',''],
+      ['Reduz horas extras no fechamento mensal','',''],
+      ['Rastreabilidade 100% para fiscalização','',''],
+      ['Sem risco de glosa fiscal por nota inválida','',''],
+    ],
+    dos_title:'✅ Fazer',donts_title:'❌ Evitar',
+    dos_items:['Interface real do app Asyn','Números reais (3s, R$340...)','Contraste antes/depois (OCR vs QR)','Texto legível em menos de 3s','Fluxo rápido e limpo entre telas','Paleta fria e tech, consistente'],
+    dont_items:['UI ilustrada ou genérica (Freepik, Canva)','Hipérboles sem base em dado real','Drama exagerado na cena do problema','Animações longas e complexas','Parágrafo de texto em vídeo','Cores fora da paleta Asyn'],
+    spec_rows:[
+      ['Stories / Reels','9:16 · 1080×1920 px · 20–30s · Meta'],
+      ['Feed quadrado','1:1 · 1080×1080 px · 20–30s · Meta + LinkedIn'],
+      ['Feed paisagem','1.91:1 · 1200×628 px · 20–30s · LinkedIn'],
+      ['Codec','H.264 · MP4 · sem B-frames'],
+      ['FPS / Cor','30fps · sRGB · sem HDR'],
+      ['Áudio','OFF por padrão — legenda obrigatória em todas as telas'],
+      ['Safe zone','15% de margem em todos os lados'],
+      ['Tamanho máx.','250 MB (Meta) · 200 MB (LinkedIn)'],
+    ],
+    palette:[
+      ['#2DCA65','Verde Asyn','CTAs, Destaques, Logo'],
+      ['#152535','Marinho escuro','Texto, Logo, Fundos premium'],
+      ['#FAF4EE','Creme','Background quente (estilo A1)'],
+      ['#E0F8EC','Verde claro','Cards de aprovação, ícones'],
+      ['#FFFFFF','Branco','Background limpo (estilo A6)'],
+      ['#D97706','Âmbar','O problema — cenas "antes"'],
+    ],
+    badge_hero:'+329% · 195 LPVs',
+    badge_motion:'🎬 Motion · 3 peças',
+    chart_title1:'LPVs por criativo · semana atual',
+    chart_title2:'Variação % vs semana anterior',
+    footer_line1:'Ampler Marketing · Asyn Brasil · Campanha Jun 2026 · nei@ampler.me',
+    footer_line2:'Dados: Meta Marketing API v21.0 · Semana 23–26 jun 2026',
+  },
+  en:{
+    tab1:'📊 Performance & Concept',tab2:'🎬 Step by Step',tab3:'✅ Benefits',tab4:'⚙️ Production',
+    lang_btn:'PT',
+    alert:'<strong>Based on real data:</strong> A6 (Demo) dominated the week with +329% impressions and 195 LPVs. A2 (No OCR) is growing +218%. Motion should amplify these angles — not reinvent.',
+    sec_perf:"Week's performance — what's working",
+    sec_concepts:'Winning concepts for motion',
+    sec_priority:'Production priority',
+    sec_steps:'Step by step — animation framework',
+    sec_steps_sub:'Each step becomes an animated screen. Fluid transitions, text readable in under 3 seconds.',
+    sec_tagline:'Closing tagline',
+    sec_scripts:'Scripts by format',
+    sec_benefits:'Full benefits list',
+    sec_benefits_sub:'Green-highlighted items come from champion creatives and should appear first in video.',
+    sec_visual:'Visual tone',
+    sec_specs:'Technical specifications',
+    sec_palette:'Asyn brand color palette',
+    th_creative:'Creative',th_impr:'Impressions',th_lpv:'LPV',th_var:'Change',th_cpc:'CPC',th_signal:'Signal',
+    signal_scale:'🏆 Scale',signal_growing:'🥈 Growing',signal_stable:'Stable',signal_fatigue:'⚠️ Fatigue',signal_pause:'❌ Pause',
+    prio_label:['Priority 1','Priority 2','Priority 3'],
+    prio_why:['Absolute champion: +329% · 195 LPVs','Strong acceleration: +218% · 52 LPVs','Declining −83% · Creative is saturated'],
+    steps:[
+      ['Contractor submits receipt','NFC-e fiscal note with visible QR Code','Hand holding note — QR in focus'],
+      ['Finance team scans it','Asyn app opens camera · targets QR Code','Phone → camera → QR'],
+      ['SEFAZ auto-validates','Automatic query, no human touch','"Validating..." → ✅ Approved'],
+      ['ERP receives the data','Fields filled with no typing at all','Form completing itself'],
+      ['Expense recorded','Reimbursement released immediately','Notification: "Reimbursement sent"'],
+    ],
+    tagline_h:'"From QR Code to ERP in 3 seconds."',
+    tagline_s:'"No errors. No effort."',
+    cta_btn:'Book your free demo · asynbrasil.com',
+    script1_title:'📱 Stories 9:16 · 20s · A6 Demo ROI',
+    script2_title:'📱 Stories 9:16 · 20s · A2 Process',
+    script1_lines:[
+      ['0–3s','Black screen · "Do you know how much one wrong PJ reimbursement costs?"'],
+      ['3–7s','Large animated number: R$340 on average (rework + correction + finance team time)'],
+      ['7–13s','Asyn interface · QR scanned · approval screen'],
+      ['13–18s','"20-minute demo. Immediate ROI."'],
+      ['18–20s','CTA + Logo + URL'],
+    ],
+    script2_lines:[
+      ['0–4s','BEFORE: someone photographing a crooked receipt + OCR error'],
+      ['4–8s','WITH ASYN: QR Code scanned in 1 second'],
+      ['8–14s','Animated flow: QR → ✅ SEFAZ → ERP filled'],
+      ['14–18s','"3 seconds. No typing. No error."'],
+      ['18–20s','CTA + Logo + URL'],
+    ],
+    benefits:[
+      ['From QR Code to ERP in 3 seconds','priority','A2 +218% this week'],
+      ['Zero manual data entry','priority',''],
+      ['No OCR errors','priority',''],
+      ['Automatic tax validation (SEFAZ)','priority',''],
+      ['Month-end close without rework','priority','A6 +329% this week'],
+      ['20-minute demo · immediate ROI','priority',''],
+      ['Full audit trail, effortlessly','priority2',''],
+      ['Tax compliance guaranteed','priority2',''],
+      ['Total visibility over contractor expenses','priority2',''],
+      ['Reports ready — no manual export','',''],
+      ['Faster reimbursement approvals','','Happier contractors'],
+      ['Scale without growing the finance team','',''],
+      ['Real-time expense visibility','',''],
+      ['Integrates with your current ERP','',''],
+      ['Fewer overtime hours at month-end','',''],
+      ['100% traceability for tax audits','',''],
+      ['No risk of invalid invoice disallowance','',''],
+    ],
+    dos_title:'✅ Do',donts_title:'❌ Avoid',
+    dos_items:['Real Asyn app interface','Real numbers (3s, R$340...)','Before/after contrast (OCR vs QR)','Text readable in under 3s','Fast, clean transitions between screens','Consistent cool/tech color palette'],
+    dont_items:['Generic or stock UI (Freepik, Canva)','Unsubstantiated hyperbole','Over-dramatized problem scenes','Long, complex animations','Paragraphs of text in video','Colors outside Asyn palette'],
+    spec_rows:[
+      ['Stories / Reels','9:16 · 1080×1920 px · 20–30s · Meta'],
+      ['Square Feed','1:1 · 1080×1080 px · 20–30s · Meta + LinkedIn'],
+      ['Landscape Feed','1.91:1 · 1200×628 px · 20–30s · LinkedIn'],
+      ['Codec','H.264 · MP4 · no B-frames'],
+      ['FPS / Color','30fps · sRGB · no HDR'],
+      ['Audio','OFF by default — subtitles required on every screen'],
+      ['Safe zone','15% margin on all sides'],
+      ['Max file size','250 MB (Meta) · 200 MB (LinkedIn)'],
+    ],
+    palette:[
+      ['#2DCA65','Asyn Green','CTAs, Highlights, Logo'],
+      ['#152535','Dark Navy','Text, Logo, Premium backgrounds'],
+      ['#FAF4EE','Cream','Warm background (A1 style)'],
+      ['#E0F8EC','Light Green','Approval cards, icons'],
+      ['#FFFFFF','White','Clean background (A6 style)'],
+      ['#D97706','Amber','The problem — "before" scenes'],
+    ],
+    badge_hero:'+329% · 195 LPVs',
+    badge_motion:'🎬 Motion · 3 pieces',
+    chart_title1:'LPVs by creative · current week',
+    chart_title2:'Change % vs previous week',
+    footer_line1:'Ampler Marketing · Asyn Brasil · Campaign Jun 2026 · nei@ampler.me',
+    footer_line2:'Data: Meta Marketing API v21.0 · Week Jun 23–26 2026',
+  }
+};
+
+let lang='pt';
 const charts={};
+
+function render(){
+  const t=T[lang];
+  // Tabs
+  ['tab1','tab2','tab3','tab4'].forEach((k,i)=>{
+    document.getElementById('tab-btn-'+i).innerHTML=t[k];
+  });
+  document.getElementById('lang-btn').textContent=t.lang_btn;
+  // Alert
+  document.getElementById('alert-text').innerHTML=t.alert;
+  // Section titles
+  Object.keys(t).filter(k=>k.startsWith('sec_')).forEach(k=>{
+    const el=document.getElementById(k);
+    if(el) el.textContent=t[k];
+  });
+  // Section subtitles
+  ['steps_sub','benefits_sub'].forEach(k=>{
+    const el=document.getElementById('sub_'+k);
+    if(el) el.textContent=t['sec_'+k]||t[k]||'';
+  });
+  // Perf table headers
+  ['creative','impr','lpv','var','cpc','signal'].forEach(k=>{
+    const el=document.getElementById('th_'+k);
+    if(el) el.textContent=t['th_'+k]||'';
+  });
+  // Signals
+  ['scale','growing','stable','fatigue','pause'].forEach(k=>{
+    document.querySelectorAll('.signal-'+k).forEach(el=>el.textContent=t['signal_'+k]);
+  });
+  // Priority labels/why
+  [0,1,2].forEach(i=>{
+    const lr=document.getElementById('prio-rank-'+i);
+    const lw=document.getElementById('prio-why-'+i);
+    if(lr) lr.textContent=t.prio_label[i];
+    if(lw) lw.textContent=t.prio_why[i];
+  });
+  // Steps
+  t.steps.forEach(([title,desc,visual],i)=>{
+    const el=document.getElementById('step-'+i);
+    if(el){
+      el.querySelector('.step-title').textContent=title;
+      el.querySelector('.step-desc').textContent=desc;
+      el.querySelector('.step-visual').textContent=visual;
+    }
+  });
+  // Tagline/CTA
+  document.getElementById('tagline-h').textContent=t.tagline_h;
+  document.getElementById('tagline-s').textContent=t.tagline_s;
+  document.getElementById('cta-btn').textContent=t.cta_btn;
+  // Scripts
+  document.getElementById('script1-title').textContent=t.script1_title;
+  document.getElementById('script2-title').textContent=t.script2_title;
+  ['script1','script2'].forEach(sk=>{
+    const cont=document.getElementById(sk+'-lines');
+    if(cont){
+      cont.innerHTML=t[sk+'_lines'].map(([ts,txt])=>
+        `<div><span class="script-ts">[${ts}]</span> ${txt}</div>`
+      ).join('');
+    }
+  });
+  // Benefits
+  const bg=document.getElementById('benefits-grid');
+  if(bg){
+    bg.innerHTML=t.benefits.map(([txt,cls,badge])=>{
+      const b=badge?`<span class="benefit-badge">${badge}</span>`:'';
+      return `<div class="benefit-item ${cls}"><span>✅</span><span class="benefit-text">${txt}</span>${b}</div>`;
+    }).join('');
+  }
+  // Dos/Donts
+  ['dos','dont'].forEach(type=>{
+    const title=document.getElementById(type+'-title');
+    if(title) title.textContent=t[type+'s_title'];
+    const cont=document.getElementById(type+'-items');
+    if(cont){
+      const icon=type==='dos'?'✔':'✘';
+      cont.innerHTML=t[type+'_items'].map(item=>`<div class="${type}-item"><span>${icon}</span>${item}</div>`).join('');
+    }
+  });
+  // Specs
+  const st=document.getElementById('spec-tbody');
+  if(st) st.innerHTML=t.spec_rows.map(([l,v])=>`<tr><td>${l}</td><td>${v}</td></tr>`).join('');
+  // Palette
+  const pg=document.getElementById('palette-grid');
+  if(pg){
+    pg.innerHTML=t.palette.map(([hex,name,use])=>{
+      const textColor=hex==='#FAF4EE'||hex==='#E0F8EC'||hex==='#FFFFFF'?'#152535':'';
+      const border=hex==='#FFFFFF'?'border:1px solid #E2E8F0;':'';
+      return `<div class="palette-swatch"><div class="swatch-color" style="background:${hex};${border}"></div>
+<div class="swatch-info"><div class="swatch-hex" style="color:${textColor||'var(--text)'}">${hex}</div>
+<div class="swatch-label">${name} · ${use}</div></div></div>`;
+    }).join('');
+  }
+  // Chart titles
+  const ct1=document.getElementById('chart-title-1');
+  const ct2=document.getElementById('chart-title-2');
+  if(ct1) ct1.textContent=t.chart_title1;
+  if(ct2) ct2.textContent=t.chart_title2;
+  // Badges
+  document.getElementById('badge-hero').textContent=t.badge_hero;
+  document.getElementById('badge-motion').textContent=t.badge_motion;
+  // Footer
+  document.getElementById('footer-1').textContent=t.footer_line1;
+  document.getElementById('footer-2').textContent=t.footer_line2;
+  // Chart labels
+  updateChartLabels(t);
+}
+
+function updateChartLabels(t){
+  if(charts.perf){
+    charts.perf.data.datasets[0].label=t.chart_title1;
+    charts.perf.update();
+  }
+}
+
+function toggleLang(){
+  lang=lang==='pt'?'en':'pt';
+  render();
+}
+
+function switchTab(id,idx){
+  document.querySelectorAll('.tab,.tab-content').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-btn-'+idx).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  initCharts();
+}
+
 function initCharts(){
   if(document.getElementById('tab-conceito').classList.contains('active')){
     if(!charts.perf){
       charts.perf=new Chart(document.getElementById('perfChart'),{
         type:'bar',
         data:{
-          labels:['A6 · Demo','A2 · Sem OCR','ADJ · Depo.','A1 · Dor Op.','A3 · QR→ERP','A4 · Compliance'],
-          datasets:[
-            {label:'LPV semana atual',data:[195,52,30,14,3,0],backgroundColor:['rgba(45,202,101,.9)','rgba(45,202,101,.75)','rgba(45,202,101,.55)','rgba(234,179,8,.5)','rgba(239,68,68,.4)','rgba(239,68,68,.3)'],borderRadius:6},
-          ]
+          labels:['A6 · Demo','A2 · Sem OCR','ADJ','A1','A3','A4'],
+          datasets:[{label:'LPV',data:[195,52,30,14,3,0],
+            backgroundColor:['rgba(45,202,101,.85)','rgba(45,202,101,.7)','rgba(45,202,101,.5)','rgba(217,119,6,.5)','rgba(220,38,38,.4)','rgba(220,38,38,.3)'],
+            borderRadius:6}]
         },
-        options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.parsed.x+' LPVs'}}},scales:{x:{grid:{color:'#30363d'},ticks:{callback:v=>v+' LPV'}},y:{grid:{display:false}}}}
+        options:{indexAxis:'y',responsive:true,
+          plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.parsed.x+' LPVs'}}},
+          scales:{x:{grid:{color:'#E2E8F0'},ticks:{callback:v=>v+' LPV'}},y:{grid:{display:false}}}}
       });
     }
     if(!charts.delta){
@@ -375,22 +683,19 @@ function initCharts(){
         type:'bar',
         data:{
           labels:['A6','A2','ADJ','A1','A3','A4'],
-          datasets:[{label:'Variação %',data:[329,218,9,-83,-50,-97],backgroundColor:d=>d.raw>=0?'rgba(34,197,94,.7)':'rgba(239,68,68,.6)',borderRadius:4}]
+          datasets:[{label:'Δ%',data:[329,218,9,-83,-50,-97],
+            backgroundColor:(ctx)=>ctx.raw>=0?'rgba(45,202,101,.75)':'rgba(220,38,38,.6)',
+            borderRadius:4}]
         },
-        options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y+'%'}}},scales:{y:{grid:{color:'#30363d'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}
+        options:{responsive:true,
+          plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+(ctx.parsed.y>=0?'+':'')+ctx.parsed.y+'%'}}},
+          scales:{y:{grid:{color:'#E2E8F0'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}
       });
     }
   }
 }
 
-function switchTab(id,el){
-  document.querySelectorAll('.tab,.tab-content').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
-  initCharts();
-}
-
-document.addEventListener('DOMContentLoaded',initCharts);
+document.addEventListener('DOMContentLoaded',()=>{ render(); initCharts(); });
 </script>
 </body>
 </html>
